@@ -1,17 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "listas/lista_heterogeneas.h"
+#include "agenda_telefonica/agenda_telefonica.h"
 
 int main(){
 
-    ListaHeterogenea* minha_lista;
+    Agenda* minha_agenda = criarAgenda();
 
+    minha_agenda = inserirContato(minha_agenda);
 
-    // Resolver problema de linkagem na criação de um novo nó.
-    minha_lista = criarTriangulo(minha_lista, 10, 20);
-    minha_lista = criarRetangulo(minha_lista, 9.80, 5.13);
-    minha_lista = criarCirculo(minha_lista, 4.5);
+    printf("%s\n", minha_agenda->informacoes->nome_contato);
 
-    
-    return 0;
-}
+}   
