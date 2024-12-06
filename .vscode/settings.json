@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "listas_heterogeneas.h": "c"
+        "listas_heterogeneas.h": "c",
+        "fila_de_listas_encadeadas.h": "c",
+        "stdlib.h": "c",
+        "lista_encadeada.h": "c"
     }
 }

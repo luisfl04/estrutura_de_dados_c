@@ -2,12 +2,10 @@
 #include <stdlib.h>
 #include "agenda_telefonica/agenda_telefonica.h"
 
-int main(){
+int main() {
 
-    Agenda* minha_agenda = criarAgenda();
+    Agenda* agenda = criarAgenda();
+    menu(agenda);
+    return 0;
 
-    minha_agenda = inserirContato(minha_agenda);
-
-    printf("%s\n", minha_agenda->informacoes->nome_contato);
-
-}   
+}
