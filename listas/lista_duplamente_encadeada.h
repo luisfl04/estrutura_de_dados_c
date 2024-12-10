@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista_encadeada.h"
-
 
 // Estrutura que implementa uma lista duplamente encadeada:
 typedef struct lista_duplamente_encadeada{
