@@ -1,12 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "arvore_binaria.h" 
 
-// Estrutura que representa a arvore binaria:
-typedef struct arvore_binaria{
-    int informacao;
-    struct arvore_binaria* esquerda;
-    struct arvore_binaria* direita;
-} ArvoreBinaria;
 
 // Função que cria a árvore binária inicialmente vazia:
 ArvoreBinaria* criarArvoreBinaria() {
@@ -15,7 +10,7 @@ ArvoreBinaria* criarArvoreBinaria() {
         printf("\nErro ao alocar memória!\n");
         exit(EXIT_FAILURE);
     }
-    nova_arvore->informacao = 0;
+    nova_arvore->informacao = 1;
     nova_arvore->esquerda = NULL;
     nova_arvore->direita = NULL;
     return nova_arvore;
@@ -41,10 +36,12 @@ ArvoreBinaria* inserirElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int
 // Busca por uma informação na arvore binária:
 ArvoreBinaria* buscarElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int elemento_buscado){
     if(arvore_passada == NULL){
+        printf("Elemento nao encontrado na árvore!\n");
         return NULL;
     }
     else{
         if(arvore_passada->informacao == elemento_buscado){
+            printf("Elemento encontrado!\n-> %d\n", arvore_passada->informacao);
             return arvore_passada;
         }
         else if(elemento_buscado < arvore_passada->informacao){
@@ -71,6 +68,7 @@ void liberarArvoreBinaria(ArvoreBinaria* arvore_passada){
         liberarArvoreBinaria(arvore_passada->esquerda);
         liberarArvoreBinaria(arvore_passada->direita);
         free(arvore_passada);
+        printf("elemento %d liberado!\n", arvore_passada->informacao);
     }
 } 
 
