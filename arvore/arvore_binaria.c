@@ -65,17 +65,19 @@ ArvoreBinaria* buscarElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int 
     
 }
 
-//Imprime os elementos da árvore binária:
 void imprimirArvoreBinaria(ArvoreBinaria* arvore_passada){
+    /* Função que imprime os elementos da árvore binária de forma recursiva, usando a pilha de chamadas das funções: */
+
     if(arvore_passada != NULL){
         imprimirArvoreBinaria(arvore_passada->esquerda);
-        printf("%d\n", arvore_passada->informacao);
+        printf("Informação do nó -> %d\n", arvore_passada->informacao);
         imprimirArvoreBinaria(arvore_passada->direita);
     }
 }
 
-// Liberando todos os elementos da árvore:
 void liberarArvoreBinaria(ArvoreBinaria* arvore_passada){
+    /* Libera todos os elementos da árvore binária usando a pilha de chamadas das funções: */
+    
     if(arvore_passada != NULL){
         liberarArvoreBinaria(arvore_passada->esquerda);
         liberarArvoreBinaria(arvore_passada->direita);
