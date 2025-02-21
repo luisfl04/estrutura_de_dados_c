@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "arvore/arvore_binaria.h"
+#include "arvore/calculo_informacoes_gerais_arvore_binaria.c"
 
 int main() {
 
@@ -10,10 +11,6 @@ int main() {
     inserirElementoNaArvoreBinaria(arvore, 20);
     inserirElementoNaArvoreBinaria(arvore, 30);
     
-    buscarElementoNaArvoreBinaria(arvore, 11);
-
-    imprimirArvoreBinaria(arvore);
-
-    liberarArvoreBinaria(arvore);
+    obterAlturaDeArvore(arvore);
 
 }
