@@ -10,10 +10,12 @@ typedef struct arvore_binaria {
 
 // Assinatura de funções implementadas em arvore_binaria.c:
 ArvoreBinaria* criarArvoreBinaria();
-ArvoreBinaria* inserirElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int elemento_inserido);
-ArvoreBinaria* buscarElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int elemento_buscado);
-void imprimirArvoreBinaria(ArvoreBinaria* arvore_passada);
-void liberarArvoreBinaria(ArvoreBinaria* arvore_passada);
+ArvoreBinaria* inserirElementoNaArvoreBinaria();
+ArvoreBinaria* buscarElementoNaArvoreBinaria();
+void imprimirArvoreBinaria();
+void liberarArvoreBinaria();
+ArvoreBinaria* removerElementoDaArvoreBinaria();
+ArvoreBinaria* obterMaiorValorDaArvore();
 
 #endif 
 

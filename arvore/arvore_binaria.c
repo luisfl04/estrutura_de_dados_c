@@ -86,6 +86,63 @@ void liberarArvoreBinaria(ArvoreBinaria* arvore_passada){
     }
 } 
 
+ArvoreBinaria* removerElementoDaArvoreBinaria(ArvoreBinaria* arvore_passada, int elemento_para_remover){
+    /* Função que faz a remoção de determinado elemento na árvore binária. */
+
+    // Se a árvore é nula, retorno a mesma:
+    if (arvore_passada == NULL){
+        return arvore_passada;
+    }
+
+    // Fazendo a busca do elemento para removê-lo:
+    if(elemento_para_remover < arvore_passada->informacao){
+        arvore_passada->esquerda = removerElementoDaArvoreBinaria(arvore_passada->esquerda, elemento_para_remover);
+    }
+    else if(elemento_para_remover > arvore_passada->informacao){
+        arvore_passada->direita = removerElementoDaArvoreBinaria(arvore_passada->direita, elemento_para_remover);
+    }
+    // Quando encontro elemento árvore, verifico a quantidade de filhos que o mesmo tem(se possúi 1 ou nenhum):
+    else{
+        if (arvore_passada->esquerda == NULL){
+            return arvore_passada->direita;
+        }  
+        else if(arvore_passada->direita == NULL){
+            return arvore_passada->esquerda;
+        }
+        
+        // Em casos onde o nó possúi dois filhos, substituirei pelo maior filho à esquerda:
+        ArvoreBinaria* maior_filho_a_esquerda = obterMaiorValorDaArvore(arvore_passada->esquerda);
+        arvore_passada->informacao = maior_filho_a_esquerda->informacao;    
+        arvore_passada->esquerda = removerElementoDaArvoreBinaria(arvore_passada->esquerda, maior_filho_a_esquerda->informacao);
+    }
+
+    return arvore_passada;
+} 
+
+ArvoreBinaria* obterMaiorValorDaArvore(ArvoreBinaria* arvore_passada){
+    /* função que busca pela máxima sub-árvore à direita de determinada árvore para obter o maior valor da mesma.. */
+
+    ArvoreBinaria* arvore_de_maior_valor = arvore_passada;
+
+    while (arvore_de_maior_valor->direita != NULL){
+        arvore_de_maior_valor = arvore_de_maior_valor->direita;
+    }
+
+    return arvore_de_maior_valor;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
