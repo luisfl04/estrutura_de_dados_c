@@ -3,21 +3,27 @@
 #include <stdio.h>
 #include "arvore_binaria.h"
 
-int array_de_folhas[100];
-int contagem_de_nos = 0;
-int contagem_de_achagem_de_folhas = 0;
+// Valores globais usados nas funções:
+
+
 
 int obterAlturaDeArvore(ArvoreBinaria* arvore_passada){
     /* Função que retorna a altura de determinada árvore buscando a folha mais distante a partir da raiz */ 
+    
+    if (arvore_passada == NULL){
+        return  -1; // Nós vazios tem altura -1!
+    }
 
-    if(arvore_passada != NULL){
-        contagem_de_nos++;
-        obterAlturaDeArvore(arvore_passada->esquerda);
-        obterAlturaDeArvore(arvore_passada->direita);
-        printf("Numero de arestas para achar a folha -> %d", contagem_de_nos);
-        array_de_folhas[contagem_de_achagem_de_folhas] = contagem_de_nos;
-        contagem_de_achagem_de_folhas++;
-        contagem_de_nos = 0;
+    // Calculando as alturas das sub-árvores da esquerda e direita:
+    int altura_da_arvore_esquerda = obterAlturaDeArvore(arvore_passada->esquerda);
+    int altura_da_arvore_direita = obterAlturaDeArvore(arvore_passada->direita);
+
+    // Comparando as alturas e retornando a maior:
+    if (altura_da_arvore_esquerda > altura_da_arvore_direita){
+        return altura_da_arvore_esquerda + 1;
+    }
+    else{
+        return altura_da_arvore_direita + 1;
     }
 
 }
