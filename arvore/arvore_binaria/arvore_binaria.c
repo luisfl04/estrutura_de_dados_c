@@ -87,7 +87,7 @@ void liberarArvoreBinaria(ArvoreBinaria* arvore_passada){
 ArvoreBinaria* removerElementoDaArvoreBinaria(ArvoreBinaria* arvore_passada, int elemento_para_remover){
     /* Função que faz a remoção de determinado elemento na árvore binária. */
 
-    // Se a árvore é nula, retorno a mesma:
+    // Se a árvore é nula, ou seka, quando não encontro o elemento, retorno a mesma:
     if (arvore_passada == NULL){
         return arvore_passada;
     }
@@ -114,7 +114,6 @@ ArvoreBinaria* removerElementoDaArvoreBinaria(ArvoreBinaria* arvore_passada, int
         arvore_passada->esquerda = removerElementoDaArvoreBinaria(arvore_passada->esquerda, maior_filho_a_esquerda->informacao);
     }
 
-    return arvore_passada;
 } 
 
 ArvoreBinaria* obterMaiorValorDaArvore(ArvoreBinaria* arvore_passada){
