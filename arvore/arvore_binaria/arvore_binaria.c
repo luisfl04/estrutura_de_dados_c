@@ -23,7 +23,7 @@ ArvoreBinaria* criarArvoreBinaria(int valor_do_no) {
 ArvoreBinaria* inserirElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int elemento_inserido){
     // Função que insere um elemento na arvore binária de acordo com o valor passado:
     
-    // Se árvore é nula, crio o nó raiz:
+    // Se árvore é nula, crio o nó:
     if(arvore_passada == NULL){
         return criarArvoreBinaria(elemento_inserido);
     }
@@ -36,8 +36,6 @@ ArvoreBinaria* inserirElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int
         arvore_passada->direita = inserirElementoNaArvoreBinaria(arvore_passada->direita, elemento_inserido);
     }
     
-    // Retorno da arvore com o novo valor inserido:
-    return arvore_passada;
 }
 
 ArvoreBinaria* buscarElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int elemento_buscado){
