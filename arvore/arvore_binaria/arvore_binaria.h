@@ -16,6 +16,10 @@ void imprimirArvoreBinaria();
 void liberarArvoreBinaria();
 ArvoreBinaria* removerElementoDaArvoreBinaria();
 ArvoreBinaria* obterMaiorValorDaArvore();
+void percorrerArvorePreOrdem();
+void percorrerArvoreEmOrdem();
+void percorrerArvorePosOrdem();
+
 
 #endif 
 

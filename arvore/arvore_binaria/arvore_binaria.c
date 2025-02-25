@@ -36,6 +36,7 @@ ArvoreBinaria* inserirElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int
         arvore_passada->direita = inserirElementoNaArvoreBinaria(arvore_passada->direita, elemento_inserido);
     }
     
+    return arvore_passada;
 }
 
 ArvoreBinaria* buscarElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int elemento_buscado){
@@ -61,6 +62,7 @@ ArvoreBinaria* buscarElementoNaArvoreBinaria(ArvoreBinaria* arvore_passada, int 
         return buscarElementoNaArvoreBinaria(arvore_passada->direita, elemento_buscado);
     }
     
+
 }
 
 void imprimirArvoreBinaria(ArvoreBinaria* arvore_passada){
@@ -127,6 +129,33 @@ ArvoreBinaria* obterMaiorValorDaArvore(ArvoreBinaria* arvore_passada){
 
     return arvore_de_maior_valor;
 }
+
+void percorrerArvorePreOrdem(ArvoreBinaria* arvore_passada){
+    /* Percurso em raiz -> esqyuerda -> direita */
+    if (arvore_passada != NULL) {
+        printf("%d ", arvore_passada->informacao);
+        percorrerArvorePreOrdem(arvore_passada->esquerda);  
+        percorrerArvorePreOrdem(arvore_passada->direita);   
+    }
+}
+
+void percorrerArvoreEmOrdem(ArvoreBinaria *arvore_passada){
+    /* Percurso em esquerda -> raiz -> direita */
+    if (arvore_passada != NULL) {
+        percorrerArvoreEmOrdem(arvore_passada->esquerda);  
+        printf("%d ", arvore_passada->informacao);
+        percorrerArvoreEmOrdem(arvore_passada->direita);   
+    }
+}
+
+void percorrerArvorePosOrdem(ArvoreBinaria* arvore_passada){
+    /* Percurso em esquerda -> direita -> raiz */
+    if (arvore_passada != NULL) {
+        percorrerArvorePosOrdem(arvore_passada->esquerda);  
+        percorrerArvorePosOrdem(arvore_passada->direita);   
+        printf("%d ", arvore_passada->informacao);
+    }
+};
 
 
 
