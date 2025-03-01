@@ -68,7 +68,7 @@ void inserirElementoFila(FilaDeListasEncadeadas* fila_passada, int informacao_pa
     }
 
     // Atualizando ponteiro do fim da fila:
-    fila_passada->fim = novo_elemento;
+    fila_passada->fim = novo_elemento;  
 }
 
 void imprimirValores(FilaDeListasEncadeadas* fila_passada){
