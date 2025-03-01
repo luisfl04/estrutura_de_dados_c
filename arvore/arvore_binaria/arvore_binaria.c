@@ -131,7 +131,7 @@ ArvoreBinaria* obterMaiorValorDaArvore(ArvoreBinaria* arvore_passada){
 }
 
 void percorrerArvorePreOrdem(ArvoreBinaria* arvore_passada){
-    /* Percurso em raiz -> esqyuerda -> direita */
+    /* Percurso em raiz -> esquerda -> direita */
     if (arvore_passada != NULL) {
         printf("%d ", arvore_passada->informacao);
         percorrerArvorePreOrdem(arvore_passada->esquerda);  

@@ -1,25 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "arvore/arvore_binaria/arvore_binaria.h"
+#include "filas/fila_de_listas_encadeadas.h"
 
 int main() {
 
-    ArvoreBinaria* arvore = criarArvoreBinaria(1);
 
-    inserirElementoNaArvoreBinaria(arvore, 10);
-    inserirElementoNaArvoreBinaria(arvore, 20);
-    inserirElementoNaArvoreBinaria(arvore, 30);
+    FilaDeListasEncadeadas* minha_fila = criarFila();
+    liberarElementosFila(minha_fila);
+    verificarFilaVazia(minha_fila);
 
-    percorrerArvorePreOrdem(arvore);
-    printf("\n");
-    percorrerArvoreEmOrdem(arvore);
-    printf("\n");
-    percorrerArvorePosOrdem(arvore);
-    printf("\n");
-    imprimirArvoreBinaria(arvore);
-    printf("\n");
-    liberarArvoreBinaria(arvore);
+
 
     return 0;
 }
