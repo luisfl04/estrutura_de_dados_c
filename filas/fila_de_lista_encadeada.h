@@ -1,5 +1,5 @@
-#ifndef FILA_DE_LISTA_ENCADEADA.H
-#define FILA_DE_LISTA_ENCADEADA.H
+#ifndef FILA_DE_LISTA_ENCADEADA_H
+#define FILA_DE_LISTA_ENCADEADA_H
 
 
 // Estrutura que representa a lista encadeada:
@@ -20,6 +20,6 @@ void inserirElementoFila(FilaDeListasEncadeadas* fila_passada, int informacao_pa
 void imprimirValores(FilaDeListasEncadeadas* fila_passada);
 void retirarElementoFila(FilaDeListasEncadeadas* fila_passada);
 void liberarElementosFila(FilaDeListasEncadeadas* fila_passada);
-void ordenarFilaOrdemCrescente(FilaDeListasEncadeadas* fila_passada);
+void ordenarFilaOrdemCrescente(FilaDeListasEncadeadas* fila_passada); // Implementar...
 
 #endif

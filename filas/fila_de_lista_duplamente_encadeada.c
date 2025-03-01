@@ -1,19 +1,9 @@
+// Libs:
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
+#include "fila_de_lista_duplamente_encadeada.h"
 
-// Estrutura que representa uma fila:
-typedef struct fila_de_listas_duplamente_encadeadas{
-    ListaDuplamenteEncadeada* inicio;
-    ListaDuplamenteEncadeada* fim;
-} Fila;
-
-// Estrutura que implementa uma lista duplamente encadeada:
-typedef struct lista_duplamente_encadeada{
-    int informacao;
-    struct lista_duplamente_encadeada* anterior;
-    struct lista_duplamente_encadeada* proxima;
-} ListaDuplamenteEncadeada;
 
 Fila* criarFila(){
     /**** Função que aloca memória para uma nova fila e retorna-a: **/
@@ -71,7 +61,7 @@ ListaDuplamenteEncadeada* inserirElementoInicioFila(Fila* fila_passada , int inf
     return novo_elemento;
 }
 
-static ListaDuplamenteEncadeada* inserirElementoFimFila(Fila* fila_passada, int informacao_passada){
+ListaDuplamenteEncadeada* inserirElementoFimFila(Fila* fila_passada, int informacao_passada){
     // Função que insere um novo elemento no fim da fila.
 
     // Verificando se a fila que foi passada ainda não teve memória alocada:
@@ -106,7 +96,7 @@ static ListaDuplamenteEncadeada* inserirElementoFimFila(Fila* fila_passada, int 
     return novo_elemento;
 }
 
-static int removerElementoInicioFila(Fila* fila_passada){
+int removerElementoInicioFila(Fila* fila_passada){
     // Função que remove o elemento do início da lista e retorna a informação que o elemento guardava
 
     // Verificando alocações:
@@ -136,7 +126,7 @@ static int removerElementoInicioFila(Fila* fila_passada){
     return informacao_removida;
 }
 
-static int removerElementoFimFila(Fila* fila_passada){
+int removerElementoFimFila(Fila* fila_passada){
     /* Função que recebe uma estrutura fila por parâmetro e remove o elemento que o ponteiro 'fim' armazena.
     Após remover, o valor da informação que esse elemento armazena é retornado. */
 
@@ -169,7 +159,7 @@ static int removerElementoFimFila(Fila* fila_passada){
     return valor_elemento_removido;
 }
 
-static ListaDuplamenteEncadeada* buscarElementoFila(Fila* fila_passada, int informacao_buscada){
+ListaDuplamenteEncadeada* buscarElementoFila(Fila* fila_passada, int informacao_buscada){
     /*Função que percorre os elementos da fila buscando pelo valor passado por parâmetro. Se o valor for achado, o mesmo   
     é retornado. */
 

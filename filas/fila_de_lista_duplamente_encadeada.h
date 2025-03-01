@@ -1,11 +1,5 @@
-#ifndef FILA_DE_LISTA_DUPLAMENTE_ENCADEADA.H
-#define FILA_DE_LISTA_DUPLAMENTE_ENCADEADA.H
-
-// Estrutura que representa uma fila:
-typedef struct fila_de_listas_duplamente_encadeadas{
-    ListaDuplamenteEncadeada* inicio;
-    ListaDuplamenteEncadeada* fim;
-} Fila;
+#ifndef FILA_DE_LISTA_DUPLAMENTE_ENCADEADA_H
+#define FILA_DE_LISTA_DUPLAMENTE_ENCADEADA_H
 
 // Estrutura que implementa uma lista duplamente encadeada:
 typedef struct lista_duplamente_encadeada{
@@ -13,6 +7,13 @@ typedef struct lista_duplamente_encadeada{
     struct lista_duplamente_encadeada* anterior;
     struct lista_duplamente_encadeada* proxima;
 } ListaDuplamenteEncadeada;
+
+// Estrutura que representa uma fila:
+typedef struct fila_de_listas_duplamente_encadeadas{
+    ListaDuplamenteEncadeada* inicio;
+    ListaDuplamenteEncadeada* fim;
+} Fila;
+
 
 // Assinatura das funções implementadas:
 Fila* criarFila();
