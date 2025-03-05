@@ -19,8 +19,4 @@ int retornarElemento();
 void imprimirPilha();
 
 
-
-
-
-
 #endif
