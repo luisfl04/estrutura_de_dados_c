@@ -39,11 +39,10 @@ void imprimirLista(Lista* lista_impressa){
     // Imprimirá a informação que está sendo armazenada na lista e logo em seguida chamará a mesma função recursivamente.
 
     if(!verificarListaVazia(lista_impressa)){
-        printf("informacao -> %d\n", lista_impressa->informacao);
+        printf(" [%d] ", lista_impressa->informacao);
         imprimirLista(lista_impressa->proximo);
     }
 }
-
 
 // função que realiza a busca de um elemento na lista:
 Lista* buscarElementoNaLista(Lista* lista_passada, int valor_pesquisado){
@@ -58,39 +57,46 @@ Lista* buscarElementoNaLista(Lista* lista_passada, int valor_pesquisado){
         }
     }
 
+    free(ponteiro_de_busca);
     return NULL;
 }
 
 // Função que remove um elemento da lista caso ele esteja presente:
 Lista* removerElementoDaLista(Lista* lista_passada, int elemento_para_retirar){
-    // ponteiro que aponta a lista anterior:
-    Lista* lista_anterior = NULL;
-    // Ponteiro que buscará os elementos na lista:
-    Lista* ponteiro_de_busca = lista_passada;
+    
+    // Verificando se a lista passada é nula:
+    if(verificarListaVazia(lista_passada)){
+        return NULL;
+    }
 
-    // Fazendo a procura do elemento passado na lista e guardando o anterior:
-    while(ponteiro_de_busca != NULL && ponteiro_de_busca->informacao != elemento_para_retirar){
-        lista_anterior = ponteiro_de_busca;
-        ponteiro_de_busca = ponteiro_de_busca->proximo;
+    // Ponteiros usados:
+    Lista* ponteiro_busca = lista_passada; // Ponteiro que será usado para percorrer a lista. 
+    Lista* ponteiro_auxiliar = NULL; // ponteiro que armazena a lista atual antes do ponteiro de busca ser alterado, para evitar perda de informação.
+
+    // Fazendo a procura do elemento passado na lista:
+    while(ponteiro_busca != NULL && ponteiro_busca->informacao != elemento_para_retirar){
+        ponteiro_auxiliar = ponteiro_busca;
+        ponteiro_busca = ponteiro_busca->proximo;
     }
 
     // Verificando se o elemento foi encontrado:
 
         // Não achou, retorna a lista passada:
-        if(ponteiro_de_busca == NULL){
+        if(ponteiro_busca == NULL){
             return lista_passada;
         }
 
         // Se achou, retira o elemento:
-        if(lista_anterior == NULL){
+        if(ponteiro_auxiliar == NULL){
             // Retirando elemento do início:
-            lista_passada = ponteiro_de_busca->proximo;
+            lista_passada = ponteiro_busca->proximo;
         }
         else{
-            lista_anterior->proximo = ponteiro_de_busca->proximo;
+            ponteiro_auxiliar->proximo = ponteiro_busca->proximo;
         }
-
-    free(ponteiro_de_busca);
+    
+    // removendo elemento:
+    free(ponteiro_busca);
 
     return lista_passada;
 }  
@@ -109,28 +115,27 @@ void liberarLista(Lista* lista_passada){
 // função que insere elementos na lista ordenadamente:
 Lista* inserirElementoOrdenado(Lista* lista_passada, int elemento_inserido){
     // Elementos usados na inserção:
-    Lista* nova_elemento_inserido;
     Lista* lista_anterior = NULL;    
     Lista* ponteiro_de_acesso = lista_passada;
-
+    
     // Percorrendo lista para encontrar a posição de inserção:
-    while(ponteiro_de_acesso != NULL && ponteiro_de_acesso->informacao < elemento_inserido){ // Se for achado um elemento que seja maior que o elemento que quero inserir, então ele é o ultimo e irei inserir o meu elemento antes dele:
+    while(ponteiro_de_acesso != NULL && ponteiro_de_acesso->informacao < elemento_inserido){
         lista_anterior = ponteiro_de_acesso;
         ponteiro_de_acesso = ponteiro_de_acesso->proximo;
     }
 
     // Criando novo elemento:
-    nova_elemento_inserido = (Lista*) malloc(sizeof(Lista));
-    nova_elemento_inserido->informacao = elemento_inserido;
+    Lista* novo_elemento = inserirElemento(lista_passada, elemento_inserido);
 
-    // Inserindo elemento na lista:
-    if(lista_anterior == NULL){ // Se a lista anterior é nula, então ele vai ser alocado na primeira posição.
-        nova_elemento_inserido->proximo = lista_passada;
-        lista_passada = nova_elemento_inserido;
+    
+    // Organizando o elemento na lista:
+    if(lista_anterior == NULL){
+        novo_elemento->proximo = lista_passada;
+        lista_passada = novo_elemento;
     }
     else {
-        nova_elemento_inserido->proximo = lista_anterior->proximo;
-        lista_anterior->proximo = nova_elemento_inserido;
+        novo_elemento->proximo = lista_anterior->proximo;
+        lista_anterior->proximo = novo_elemento;
     }
 
     return lista_passada;
